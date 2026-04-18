@@ -1,0 +1,83 @@
+/* Design System Color Tokens
+   - All colors exposed as CSS variables (single source of truth)
+   - Use `data-theme="dark"` on `html` or `body` to enable dark mode overrides
+   - Tokens are semantic (aliases) + scales (neutrals & accents)
+*/
+
+:root {
+  /* Neutral scale (use variables in components instead of raw hex) */
+  --color-neutral-0: #ffffff;
+  --color-neutral-100: #f5f7fb;
+  --color-neutral-200: #e6e9f2;
+  --color-neutral-300: #cfd6e6;
+  --color-neutral-400: #9aa7bf;
+  --color-neutral-500: #6b7789;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #2d3748;
+  --color-neutral-800: #111827;
+  --color-neutral-900: #0b1220;
+
+  /* Semantic surface / text */
+  --color-bg: var(--color-neutral-0);
+  --color-surface: var(--color-neutral-100);
+  --color-border: var(--color-neutral-200);
+  --color-text: var(--color-neutral-900);
+  --color-muted: var(--color-neutral-500);
+
+  /* Primary (vibrant, modern blue) */
+  --color-primary-50: #ebf3ff;
+  --color-primary-100: #d2e6ff;
+  --color-primary-200: #a6cfff;
+  --color-primary-300: #7ab8ff;
+  --color-primary-400: #4e9fff;
+  --color-primary-500: #2563eb; /* primary */
+  --color-primary-600: #1f4fd6;
+  --color-primary-700: #183aa9;
+  --color-primary-800: #10296f;
+  --color-primary-900: #08142f;
+  --color-primary-foreground: #ffffff; /* text on primary */
+
+  /* Secondary (playful magenta) */
+  --color-secondary-500: #ec4899;
+  --color-secondary-foreground: #ffffff;
+
+  /* Semantic feedback colors */
+  --color-success-500: #16a34a;
+  --color-warning-500: #d97706;
+  --color-danger-500: #ef4444;
+  --color-info-500: #06b6d4;
+
+  /* Elevation shadows / overlays */
+  --shadow-1: 0 1px 2px rgba(11,18,32,0.06);
+  --shadow-2: 0 6px 20px rgba(11,18,32,0.08);
+}
+
+/* Dark theme: override only semantic aliases so components keep using the same token names */
+:root[data-theme="dark"], html[data-theme="dark"] {
+  --color-bg: var(--color-neutral-900);
+  --color-surface: #0f1724;
+  --color-border: #1f2937;
+  --color-text: var(--color-neutral-100);
+  --color-muted: var(--color-neutral-400);
+
+  /* Make primary lighter on dark so it keeps contrast */
+  --color-primary-500: #3b82f6;
+  --color-primary-foreground: #0b1220;
+
+  --shadow-1: 0 1px 2px rgba(2,6,23,0.6);
+  --shadow-2: 0 10px 30px rgba(2,6,23,0.65);
+}
+
+/* Usage examples (do not hardcode colors in components):
+
+.button {
+  background: var(--color-primary-500);
+  color: var(--color-primary-foreground);
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+*/

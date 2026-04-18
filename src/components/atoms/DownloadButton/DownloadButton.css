@@ -1,0 +1,41 @@
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  padding: clamp(0.5rem, 0.9vw, 0.75rem) clamp(0.75rem, 1.6vw, 1rem);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  font-weight: 600;
+  color: var(--color-primary-foreground, #fff);
+  background: var(--color-primary-500, #2563eb);
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-1);
+}
+
+.download-button:focus {
+  outline: 3px solid color-mix(in srgb, var(--color-primary-500) 30%, transparent);
+  outline-offset: 3px;
+}
+
+.download-button__label {
+  line-height: 1;
+}
+
+.download-button--small {
+  padding: clamp(0.25rem, 0.8vw, 0.5rem) clamp(0.5rem, 1vw, 0.75rem);
+  font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+}
+
+.download-button--large {
+  padding: clamp(0.75rem, 1.2vw, 1rem) clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
+}
+
+.download-button[aria-disabled='true'],
+.download-button.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
