@@ -10,10 +10,14 @@ function App() {
 
   return (
     <>
-      <main style={{padding: '2rem'}}>
+      <main className="app__main">
         <h1>Welcome</h1>
-        <p>Example Download Button atom:</p>
-        <DownloadButton href="/assets/hero.png" filename="hero.png">Download Hero Image</DownloadButton>
+        <p>Example Download Button atom (three variants):</p>
+        <div className="download-examples">
+          <DownloadButton href="/assets/hero.png" filename="hero.png" variant="primary">Download</DownloadButton>
+          <DownloadButton href="/assets/hero.png" filename="hero.png" variant="ghost">Download</DownloadButton>
+          <DownloadButton href="/assets/hero.png" filename="hero.png" variant="icon" size="small">Download</DownloadButton>
+        </div>
       </main>
     </>
   )
