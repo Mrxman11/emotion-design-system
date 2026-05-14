@@ -1,0 +1,50 @@
+.star-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.star {
+  background: transparent;
+  border: none;
+  padding: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: transform 120ms ease, color 120ms ease, filter 120ms ease;
+}
+
+.star svg {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+}
+
+.star:hover,
+.star:focus {
+  transform: translateY(-2px) scale(1.02);
+  color: color-mix(in srgb, var(--color-primary-500) 60%, var(--color-muted) 40%);
+  outline: none;
+}
+
+.star--filled {
+  color: var(--color-primary-500);
+}
+
+.star-rating--small .star svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.star-rating--large .star svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.star:disabled {
+  cursor: default;
+  opacity: 0.6;
+}

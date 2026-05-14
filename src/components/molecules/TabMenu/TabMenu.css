@@ -1,0 +1,103 @@
+.tab-menu {
+  width: 100%;
+  background: var(--color-bg);
+  padding: var(--space-sm) 0;
+}
+
+.tab-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0 var(--space-md);
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  justify-content: center;
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  padding: calc(var(--space-xs) + 2px) var(--space-sm);
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  cursor: pointer;
+  position: relative;
+  transition: color 140ms ease, transform 120ms ease;
+}
+
+.tab:focus {
+  outline: 3px solid color-mix(in srgb, var(--color-primary-500) 22%, transparent);
+  outline-offset: 3px;
+}
+
+/* Active state: underline */
+.tab--active {
+  color: var(--color-primary-foreground);
+}
+
+.tab--active::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: -6px;
+  height: 3px;
+  border-radius: 4px;
+  background: var(--color-primary-500);
+}
+
+/* Dropdown styles */
+.tab-menu__dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-xs));
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 12rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-input);
+  padding: var(--space-sm);
+  box-shadow: var(--shadow-2);
+  display: none;
+  z-index: 30;
+}
+
+/* Show dropdown on hover or when the tab is active */
+.tab-menu__item:hover .tab-menu__dropdown {
+  display: block;
+}
+
+.tab-menu__item .tab--active + .tab-menu__dropdown,
+.tab-menu__item .tab--active ~ .tab-menu__dropdown,
+.tab-menu__item .tab--active .tab-menu__dropdown {
+  display: block;
+}
+
+.tab-menu__dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.tab-menu__dropdown-item {
+  background: transparent;
+  border: none;
+  text-align: left;
+  padding: calc(var(--space-xs) + 2px) var(--space-sm);
+  border-radius: 8px;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.tab-menu__dropdown-item:hover {
+  background: color-mix(in srgb, var(--color-primary-500) 6%, var(--color-surface) 94%);
+}
+
+/* Utility for demo: show hover visual without pointer */
+.tab.is-hover {
+  transform: translateY(-1px);
+}
