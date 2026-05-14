@@ -1,0 +1,61 @@
+.textarea-atom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  width: 100%;
+  max-width: 40rem;
+}
+
+.textarea-atom__label {
+  font-family: var(--font-family-body);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+
+.textarea-atom__control {
+  font-family: var(--font-family-body);
+  font-size: var(--text-base);
+  padding: clamp(0.5rem, 1vw, 0.75rem);
+  border-radius: var(--radius-pill);
+  border: var(--border-thin);
+  background: var(--color-bg-paper);
+  color: var(--color-text-main);
+  resize: vertical;
+  min-height: 6rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 120ms ease;
+}
+
+.textarea-atom__control:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent-lime) 12%, transparent);
+  border-color: var(--color-accent-lime);
+}
+
+/* Error state */
+.textarea-atom--error .textarea-atom__control {
+  border-color: var(--color-accent-hotpink);
+}
+.textarea-atom__error {
+  color: var(--color-accent-hotpink);
+  font-size: var(--text-sm);
+}
+
+/* Validated state */
+.textarea-atom--validated .textarea-atom__control {
+  border-color: var(--color-accent-lime);
+}
+.textarea-atom__validated {
+  color: var(--color-accent-lime);
+  font-size: var(--text-sm);
+}
+
+/* Neutral helper */
+.textarea-atom__helper {
+  color: color-mix(in srgb, var(--color-text-main) 60%, #ffffff 40%);
+  font-size: var(--text-sm);
+}
+
+/* Compact responsive */
+@media (max-width: 640px) {
+  .textarea-atom { max-width: 100%; }
+}

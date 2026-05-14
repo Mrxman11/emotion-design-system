@@ -1,6 +1,6 @@
 .tab-menu {
   width: 100%;
-  background: var(--color-bg);
+  background: transparent;
   padding: var(--space-sm) 0;
 }
 
@@ -16,24 +16,25 @@
 
 .tab {
   background: transparent;
-  border: none;
+  border: var(--border-thin);
   padding: calc(var(--space-xs) + 2px) var(--space-sm);
-  font-family: var(--font-family-main);
-  font-size: var(--font-size-base);
-  color: var(--color-text);
+  font-family: var(--font-family-body);
+  font-size: var(--text-base);
+  color: var(--color-text-main);
   cursor: pointer;
   position: relative;
   transition: color 140ms ease, transform 120ms ease;
 }
 
 .tab:focus {
-  outline: 3px solid color-mix(in srgb, var(--color-primary-500) 22%, transparent);
-  outline-offset: 3px;
+  outline: 3px solid color-mix(in srgb, var(--color-border-main) 36%, transparent);
+  outline-offset: 4px;
 }
 
 /* Active state: underline */
 .tab--active {
-  color: var(--color-primary-foreground);
+  color: var(--color-text-main);
+  border-color: var(--color-border-main);
 }
 
 .tab--active::after {
@@ -42,9 +43,9 @@
   left: 8px;
   right: 8px;
   bottom: -6px;
-  height: 3px;
+  height: 4px;
   border-radius: 4px;
-  background: var(--color-primary-500);
+  background: var(--color-accent-hotpink);
 }
 
 /* Dropdown styles */
@@ -54,11 +55,11 @@
   left: 50%;
   transform: translateX(-50%);
   min-width: 12rem;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-input);
+  background: var(--color-bg-paper);
+  border: var(--border-thin);
+  border-radius: var(--radius-pill);
   padding: var(--space-sm);
-  box-shadow: var(--shadow-2);
+  box-shadow: var(--shadow-brutalist);
   display: none;
   z-index: 30;
 }
@@ -89,12 +90,12 @@
   text-align: left;
   padding: calc(var(--space-xs) + 2px) var(--space-sm);
   border-radius: 8px;
-  color: var(--color-text);
+  color: var(--color-text-main);
   cursor: pointer;
 }
 
 .tab-menu__dropdown-item:hover {
-  background: color-mix(in srgb, var(--color-primary-500) 6%, var(--color-surface) 94%);
+  background: color-mix(in srgb, var(--color-accent-hotpink) 10%, var(--color-bg-paper) 90%);
 }
 
 /* Utility for demo: show hover visual without pointer */

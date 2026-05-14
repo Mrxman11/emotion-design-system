@@ -1,6 +1,6 @@
 .pill-menu {
   width: 100%;
-  background: var(--color-bg);
+  background: transparent;
   padding: var(--space-sm) 0;
 }
 
@@ -29,35 +29,35 @@
   align-items: center;
   gap: var(--space-xs);
   padding: clamp(0.35rem, 1vw, 0.6rem) clamp(0.75rem, 1.6vw, 1.25rem);
-  border-radius: 9999px;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  color: var(--color-text);
-  font-family: var(--font-family-main);
-  font-size: var(--font-size-sm);
+  border-radius: var(--radius-pill);
+  border: var(--border-thin);
+  background: var(--color-bg-paper);
+  color: var(--color-text-main);
+  font-family: var(--font-family-body);
+  font-size: var(--text-sm);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
   transition: background 160ms ease, transform 120ms ease, box-shadow 160ms ease, border-color 160ms ease, color 160ms ease;
 }
 
 .pill:focus {
-  outline: 3px solid color-mix(in srgb, var(--color-primary-500) 22%, transparent);
-  outline-offset: 3px;
+  outline: 3px solid color-mix(in srgb, var(--color-border-main) 36%, transparent);
+  outline-offset: 4px;
 }
 
 /* Neutral hover: show dropdown and a subtle tint */
 .pill:hover {
-  background: color-mix(in srgb, var(--color-primary-500) 6%, var(--color-surface) 94%);
-  border-color: color-mix(in srgb, var(--color-primary-500) 18%, var(--color-border) 82%);
+  background: color-mix(in srgb, var(--color-accent-hotpink) 10%, var(--color-bg-paper) 90%);
+  border-color: var(--color-border-main);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-1);
+  box-shadow: var(--shadow-brutalist);
 }
 
 /* Active state: strong accent */
 .pill--active {
-  background: var(--color-primary-500);
-  color: var(--color-primary-foreground);
-  border-color: color-mix(in srgb, var(--color-primary-500) 44%, var(--color-border) 56%);
+  background: var(--color-accent-lime);
+  color: var(--color-text-main);
+  border-color: var(--color-border-main);
 }
 
 /* Dropdown (hidden by default, shown on hover or when the item has .pill--active) */
@@ -67,11 +67,11 @@
   left: 50%;
   transform: translateX(-50%);
   min-width: 12rem;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-input);
+  background: var(--color-bg-paper);
+  border: var(--border-thin);
+  border-radius: var(--radius-pill);
   padding: var(--space-sm);
-  box-shadow: var(--shadow-2);
+  box-shadow: var(--shadow-brutalist);
   display: none;
   z-index: 40;
 }
@@ -103,18 +103,18 @@
   text-align: left;
   padding: calc(var(--space-xs) + 2px) var(--space-sm);
   border-radius: 8px;
-  color: var(--color-text);
+  color: var(--color-text-main);
   cursor: pointer;
 }
 
 .pill-menu__dropdown-item:hover {
-  background: color-mix(in srgb, var(--color-primary-500) 6%, var(--color-surface) 94%);
+  background: color-mix(in srgb, var(--color-accent-hotpink) 10%, var(--color-bg-paper) 90%);
 }
 
 /* Utility class to show a hover state visually without pointer (for static demos) */
 .pill.is-hover {
-  background: color-mix(in srgb, var(--color-primary-500) 6%, var(--color-surface) 94%);
-  border-color: color-mix(in srgb, var(--color-primary-500) 18%, var(--color-border) 82%);
+  background: color-mix(in srgb, var(--color-accent-hotpink) 10%, var(--color-bg-paper) 90%);
+  border-color: var(--color-border-main);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-1);
+  box-shadow: var(--shadow-brutalist);
 }

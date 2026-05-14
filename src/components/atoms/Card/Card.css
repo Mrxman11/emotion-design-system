@@ -1,13 +1,14 @@
 .card {
-  background: var(--card-bg, var(--social-bg));
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius-card);
+  background: var(--color-bg-paper);
+  border: var(--border-thick);
+  border-radius: var(--radius-card);
   padding: var(--space-lg);
-  box-shadow: var(--shadow);
-  color: var(--text-h);
-  max-width: 36rem;
+  box-shadow: var(--shadow-brutalist);
+  color: var(--color-text-main);
   width: 100%;
   box-sizing: border-box;
+  /* Allow cards to stretch to fill grid columns or be full-width when needed */
+  display: block;
 }
 
 .card__media {
@@ -18,7 +19,7 @@
   display: block;
   width: 100%;
   height: auto;
-  border-radius: calc(var(--border-radius-card) - 2px);
+  border-radius: calc(var(--radius-card) - 2px);
 }
 
 .card__content {
@@ -26,14 +27,16 @@
 }
 
 .card__title {
-  font-size: var(--font-size-lg, clamp(1rem, 2vw, 1.125rem));
+  font-family: var(--font-family-serif);
+  font-size: var(--text-lg);
   margin: 0 0 var(--space-sm);
-  color: var(--text-h);
+  color: var(--color-text-main);
 }
 
 .card__body {
-  font-size: var(--font-size-base);
-  color: var(--text, var(--text-h));
+  font-family: var(--font-family-body);
+  font-size: var(--text-base);
+  color: var(--color-text-main);
 }
 
 /* Horizontal variation: media left, content right */
@@ -56,4 +59,10 @@
 /* No-image variation: hide media and ensure spacing */
 .card--no-image .card__media {
   display: none;
+}
+
+/* Utility to force a card to span the full container (useful when a full-bleed card is required) */
+.card--full {
+  grid-column: 1 / -1;
+  width: 100%;
 }

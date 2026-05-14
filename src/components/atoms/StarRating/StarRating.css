@@ -11,7 +11,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-muted);
+  color: color-mix(in srgb, var(--color-text-main) 48%, transparent);
   cursor: pointer;
   transition: transform 120ms ease, color 120ms ease, filter 120ms ease;
 }
@@ -26,12 +26,12 @@
 .star:hover,
 .star:focus {
   transform: translateY(-2px) scale(1.02);
-  color: color-mix(in srgb, var(--color-primary-500) 60%, var(--color-muted) 40%);
+  color: color-mix(in srgb, var(--color-accent-lime) 66%, var(--color-text-main) 34%);
   outline: none;
 }
 
 .star--filled {
-  color: var(--color-primary-500);
+  color: var(--color-accent-lime);
 }
 
 .star-rating--small .star svg {

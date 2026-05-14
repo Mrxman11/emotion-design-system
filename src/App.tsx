@@ -9,6 +9,7 @@ import NeutralButton from './components/atoms/NeutralButton/NeutralButton'
 import PillMenu from './components/molecules/PillMenu/PillMenu'
 import StarRating from './components/atoms/StarRating/StarRating'
 import CarouselCard from './components/organisms/CarouselCard/CarouselCard'
+import Textarea from './components/atoms/Textarea/Textarea'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -78,6 +79,28 @@ function App() {
             <div>
               <p>Controlled (value = 3)</p>
               <StarRating value={3} />
+            </div>
+          </div>
+        </section>
+
+        <div style={{ height: 'var(--space-lg)' }} />
+
+        <section aria-labelledby="textarea-demo">
+          <h2 id="textarea-demo">Multiline Input — Validation States</h2>
+          <div style={{ display: 'flex', gap: 'var(--space-md)', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+            <div style={{ minWidth: 220 }}>
+              <p>Neutral</p>
+              <Textarea placeholder="Write something..." rows={5} helperText="Optional helper text" />
+            </div>
+
+            <div style={{ minWidth: 220 }}>
+              <p>Error</p>
+              <Textarea state="error" errorMessage="Please provide at least 10 characters" defaultValue="short" rows={5} />
+            </div>
+
+            <div style={{ minWidth: 220 }}>
+              <p>Validated</p>
+              <Textarea state="validated" defaultValue="Looks good to me." rows={5} />
             </div>
           </div>
         </section>

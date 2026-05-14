@@ -4,21 +4,21 @@
   justify-content: center;
   gap: var(--space-sm);
   padding: clamp(0.5rem, 0.9vw, 0.75rem) clamp(0.75rem, 1.6vw, 1rem);
-  font-family: var(--font-family-main);
-  font-size: var(--font-size-base);
+  font-family: var(--font-family-body);
+  font-size: var(--text-base);
   font-weight: var(--font-weight-medium);
   line-height: 1;
-  border-radius: var(--border-radius-input);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  color: var(--color-text);
+  border-radius: var(--radius-pill);
+  border: var(--border-thin);
+  background: var(--color-bg-paper);
+  color: var(--color-text-main);
   cursor: pointer;
   transition: background 180ms ease, transform 120ms ease, box-shadow 180ms ease, border-color 180ms ease, color 180ms ease;
 }
 
 .neutral-button:focus {
-  outline: 3px solid color-mix(in srgb, var(--color-primary-500) 22%, transparent);
-  outline-offset: 3px;
+  outline: 3px solid color-mix(in srgb, var(--color-border-main) 36%, transparent);
+  outline-offset: 4px;
 }
 
 .neutral-button__label {
@@ -27,39 +27,39 @@
 
 .neutral-button--small {
   padding: clamp(0.25rem, 0.8vw, 0.5rem) clamp(0.5rem, 1vw, 0.75rem);
-  font-size: var(--font-size-sm);
+  font-size: var(--text-sm);
 }
 
 .neutral-button--large {
   padding: clamp(0.75rem, 1.2vw, 1rem) clamp(1rem, 2vw, 1.25rem);
-  font-size: var(--font-size-base);
+  font-size: var(--text-base);
 }
 
 /* Hover state - visually lift and slightly tint with primary accent for a playful, accessible interaction */
 .neutral-button:not([aria-disabled='true']):hover,
 .neutral-button:not(:disabled):hover {
-  background: color-mix(in srgb, var(--color-primary-500) 6%, var(--color-surface) 94%);
-  border-color: color-mix(in srgb, var(--color-primary-500) 22%, var(--color-border) 78%);
+  background: color-mix(in srgb, var(--color-accent-hotpink) 10%, var(--color-bg-paper) 90%);
+  border-color: var(--color-border-main);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-1);
+  box-shadow: var(--shadow-brutalist);
 }
 
 /* Utility class to visually demonstrate the hover state (useful in static examples) */
 .neutral-button.is-hover {
-  background: color-mix(in srgb, var(--color-primary-500) 6%, var(--color-surface) 94%);
-  border-color: color-mix(in srgb, var(--color-primary-500) 22%, var(--color-border) 78%);
+  background: color-mix(in srgb, var(--color-accent-hotpink) 10%, var(--color-bg-paper) 90%);
+  border-color: var(--color-border-main);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-1);
+  box-shadow: var(--shadow-brutalist);
 }
 
 /* Disabled state */
 .neutral-button[aria-disabled='true'],
 .neutral-button:disabled {
-  opacity: 0.48;
+  opacity: 0.5;
   pointer-events: none;
   cursor: default;
-  background: var(--color-surface);
-  color: var(--color-muted);
-  border-color: var(--color-border);
+  background: var(--color-bg-paper);
+  color: color-mix(in srgb, var(--color-text-main) 40%, transparent);
+  border-color: var(--color-border-main);
   box-shadow: none;
 }
