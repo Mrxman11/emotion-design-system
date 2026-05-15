@@ -81,8 +81,13 @@
    --shadow-brutalist: 6px 6px 0px 0px rgba(0,0,0,0.6);
 }
 
-/* Smooth transitions for theme changes */
-html { transition: background 220ms ease, color 220ms ease }
+/* Dark mode body background override */
+[data-theme="dark"] body {
+   background: var(--color-bg-paper);
+}
+
+/* nsitions for theme changes */
+html { transition: background 220ms ease, color 220ms ease }Smooth tra
 
 /* Global editorial/base styles */
 html, body { height: 100%; }
@@ -129,21 +134,21 @@ h2 { font-family: var(--font-family-serif); font-size: clamp(1.25rem, 3vw + 0.5r
 
 /* Section outlines and subtle background tints */
 section[aria-labelledby="atoms-section"] {
-   background: color-mix(in srgb, var(--color-bg-pink) 8%, transparent);
+   background: color-mix(in srgb, var(--color-bg-pink) 18%, transparent);
    padding: var(--space-md);
    border-radius: calc(var(--radius-card) / 2);
    outline: 2px solid color-mix(in srgb, var(--color-border-main) 8%, transparent);
 }
 
 section[aria-labelledby="molecules-section"] {
-   background: color-mix(in srgb, var(--color-bg-blue) 8%, transparent);
+   background: color-mix(in srgb, var(--color-bg-blue) 18%, transparent);
    padding: var(--space-md);
    border-radius: calc(var(--radius-card) / 2);
    outline: 2px solid color-mix(in srgb, var(--color-border-main) 8%, transparent);
 }
 
 section[aria-labelledby="organism-section"] {
-   background: color-mix(in srgb, var(--color-bg-green) 8%, transparent);
+   background: color-mix(in srgb, var(--color-bg-green) 18%, transparent);
    padding: var(--space-md);
    border-radius: calc(var(--radius-card) / 2);
    outline: 2px solid color-mix(in srgb, var(--color-border-main) 8%, transparent);
@@ -158,6 +163,7 @@ section[aria-labelledby] {
 .card {
    outline: 1px solid color-mix(in srgb, var(--color-border-main) 10%, transparent);
    outline-offset: 8px;
+   background: color-mix(in srgb, var(--color-bg-blue) 6%, var(--color-bg-paper));
 }
 
 .download-examples > *,
@@ -170,10 +176,80 @@ section[aria-labelledby] {
    outline-offset: 6px;
    border-radius: 8px;
    padding: calc(var(--space-xs) + 2px);
+   background: color-mix(in srgb, var(--color-bg-green) 6%, transparent);
 }
 
 /* Ensure outlines don't collapse on small screens */
 @media (max-width: 640px) {
    .download-examples > *, .neutral-examples > div, .atoms__cards > *, .atoms__group > div { outline-offset: 4px; }
+}
+
+/* Top nav centered and styled */
+.app__nav {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: var(--space-sm);
+   margin-bottom: var(--space-lg);
+}
+.app__nav nav { display: flex; gap: var(--space-md); align-items: center; }
+.app__nav a { color: inherit; font-weight: var(--font-weight-medium); }
+
+/* Nav links as pills */
+.app__nav nav a {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   padding: calc(var(--space-xs) / 2) calc(var(--space-sm));
+   border-radius: 9999px;
+   border: var(--border-thin);
+   background: transparent;
+   transition: background 160ms ease, color 160ms ease, transform 120ms ease;
+}
+
+/* Hover effect: change color to hotpink accent */
+.app__nav nav a:hover {
+   background: var(--color-accent-hotpink);
+   color: var(--color-bg-paper);
+   border-color: var(--color-accent-hotpink);
+   transform: translateY(-1px);
+}
+
+/* Active link styling uses lime accent */
+.app__nav nav a.active {
+   background: var(--color-accent-lime);
+   color: var(--color-text-main);
+   border-color: var(--color-accent-lime);
+}
+/* add a light pink/nav tint to make the header feel coloured */
+.app__nav {
+   background: color-mix(in srgb, var(--color-bg-pink) 6%, transparent);
+   padding: calc(var(--space-sm) + 0.25rem);
+   border-radius: 12px;
+}
+
+/* Documentation/Releases page container (matches site main container feel) */
+.doc-page {
+   max-width: 1100px;
+   margin: 0 auto;
+   background: linear-gradient(90deg,
+     color-mix(in srgb, var(--color-bg-pink) 12%, var(--color-bg-paper)),
+     color-mix(in srgb, var(--color-bg-blue) 10%, var(--color-bg-paper)),
+     color-mix(in srgb, var(--color-bg-green) 10%, var(--color-bg-paper))
+   );
+   padding: var(--space-lg);
+   border-radius: var(--radius-card);
+   box-shadow: var(--shadow-brutalist);
+}
+
+.doc-cards {
+   display: flex;
+   gap: var(--space-md);
+   flex-wrap: wrap;
+   margin-top: var(--space-md);
+}
+.doc-cards .card {
+   min-width: 220px;
+   max-width: 340px;
 }
 
