@@ -47,18 +47,49 @@
   color: var(--color-text-main);
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: var(--radius-pill);
+  border-radius: 9999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   box-shadow: var(--shadow-brutalist);
+  transition: background 160ms ease, color 160ms ease, transform 120ms ease, box-shadow 120ms ease;
 }
 
 .carousel-card__nav--prev { left: 0.75rem }
 .carousel-card__nav--next { right: 0.75rem }
 
 .carousel-card__nav:focus { outline: 3px solid color-mix(in srgb, var(--color-border-main) 36%, transparent); outline-offset: 3px }
+
+/* Nav hover color change (disabled carousel won't change) */
+.carousel-card:not(.is-disabled) .carousel-card__nav:hover {
+  background: var(--color-accent-hotpink);
+  color: var(--color-bg-paper);
+  border-color: var(--color-accent-hotpink);
+  transform: translateY(-50%) scale(1.06);
+  box-shadow: 6px 6px 0 0 color-mix(in srgb, var(--color-border-main) 20%, transparent);
+}
+
+/* Hover demo state: enhance nav and active slide visuals */
+.carousel-card.is-hover .carousel-card__nav {
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 6px 6px 0 0 var(--color-border-main);
+}
+.carousel-card.is-hover .carousel-card__slide.is-active {
+  transform: scale(1.02);
+}
+.carousel-card.is-hover .carousel-card__dot.is-active {
+  transform: scale(1.4);
+}
+
+/* Disabled demo state: dim and disable interactions */
+.carousel-card.is-disabled {
+  opacity: 0.5;
+}
+.carousel-card.is-disabled .carousel-card__nav,
+.carousel-card.is-disabled .carousel-card__dot {
+  cursor: default;
+}
 
 .carousel-card__indicators {
   display: flex;
@@ -70,7 +101,7 @@
 .carousel-card__dot {
   width: 12px;
   height: 12px;
-  border-radius: var(--radius-pill);
+  border-radius: 9999px;
   background: var(--color-border-main);
   border: none;
   cursor: pointer;

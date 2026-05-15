@@ -2,13 +2,17 @@
   background: var(--color-bg-paper);
   border: var(--border-thick);
   border-radius: var(--radius-card);
-  padding: var(--space-lg);
+  padding: var(--space-md);
   box-shadow: var(--shadow-brutalist);
   color: var(--color-text-main);
-  width: 100%;
+  max-width: 18rem;
+  width: auto;
+  height: auto;
+  min-height: 0;
   box-sizing: border-box;
-  /* Allow cards to stretch to fill grid columns or be full-width when needed */
-  display: block;
+  display: inline-block;
+  vertical-align: top;
+  margin: var(--space-sm);
 }
 
 .card__media {
@@ -43,26 +47,21 @@
 .card--horizontal {
   display: flex;
   gap: var(--space-lg);
-  align-items: flex-start;
+  align-items: center;
 }
 
 .card--horizontal .card__media {
-  flex: 0 0 40%;
+  flex: 0 0 auto;
+  width: 40%;
   max-width: 40%;
   margin-bottom: 0;
 }
 
 .card--horizontal .card__content {
-  flex: 1 1 60%;
+  flex: 1 1 auto;
 }
 
 /* No-image variation: hide media and ensure spacing */
 .card--no-image .card__media {
   display: none;
-}
-
-/* Utility to force a card to span the full container (useful when a full-bleed card is required) */
-.card--full {
-  grid-column: 1 / -1;
-  width: 100%;
 }

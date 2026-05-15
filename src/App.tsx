@@ -10,106 +10,133 @@ import PillMenu from './components/molecules/PillMenu/PillMenu'
 import StarRating from './components/atoms/StarRating/StarRating'
 import CarouselCard from './components/organisms/CarouselCard/CarouselCard'
 import Textarea from './components/atoms/Textarea/Textarea'
+import ThemeToggle from './components/atoms/ThemeToggle/ThemeToggle'
+import ScrollTracker from './components/atoms/ScrollTracker/ScrollTracker'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+      <ScrollTracker />
+      <ThemeToggle />
       <main className="app__main">
-        <PillMenu />
-        <div style={{ height: 'var(--space-md)' }} />
-        <h1>Welcome</h1>
-        <p>Example card variations and Download Button atom (three variants):</p>
+        <h1>Mike's Components</h1>
 
-        <div className="card-examples">
-          <Card title="Vertical (default)" imageSrc={heroImg}>
-            Vertical card with image above the content.
-          </Card>
+        <section aria-labelledby="atoms-section">
+          <h2 id="atoms-section">Atoms</h2>
 
-          <Card className="" title="Horizontal" imageSrc={heroImg} variant="horizontal">
-            Horizontal card with media on the left.
-          </Card>
+          <div className="atoms__group">
+            <h3>Cards</h3>
+            <div className="atoms__cards" style={{ display: 'flex', gap: 'var(--space-md)', alignItems: 'center', flexWrap: 'wrap' }}>
+              <Card title="Vertical (default)" imageSrc={heroImg}>
+                Vertical card with image above the content.
+              </Card>
 
-          <Card title="No image" variant="no-image">
-            Card variant without an image; useful for text-only content.
-          </Card>
-        </div>
+              <Card title="Horizontal" imageSrc={heroImg} variant="horizontal">
+                Horizontal card with media on the left.
+              </Card>
 
-        <div style={{ height: 'var(--space-lg)' }} />
-
-        <div className="download-examples">
-          <DownloadButton href="/assets/hero.png" filename="hero.png" variant="primary">Download</DownloadButton>
-          <DownloadButton href="/assets/hero.png" filename="hero.png" variant="ghost">Download</DownloadButton>
-          <DownloadButton href="/assets/hero.png" filename="hero.png" variant="icon" size="small">Download</DownloadButton>
-        </div>
-
-        <div style={{ height: 'var(--space-lg)' }} />
-
-        <section aria-labelledby="neutral-demo">
-          <h2 id="neutral-demo">Neutral Button — States</h2>
-          <div className="neutral-examples" style={{ display: 'flex', gap: 'var(--space-md)', alignItems: 'center' }}>
-            <div>
-              <p>Default</p>
-              <NeutralButton>Neutral</NeutralButton>
+              <Card title="No image" variant="no-image">
+                Card variant without an image; useful for text-only content.
+              </Card>
             </div>
+          </div>
 
-            <div>
-              <p>Hover (simulated)</p>
-              <button className="neutral-button is-hover" aria-label="Simulated hover">Neutral</button>
+          <div className="atoms__group">
+            <h3>Download Buttons</h3>
+            <div style={{ display: 'flex', gap: 'var(--space-md)', alignItems: 'center' }}>
+              <DownloadButton href="/assets/hero.png" filename="hero.png" variant="primary">Download</DownloadButton>
+              <DownloadButton href="/assets/hero.png" filename="hero.png" variant="ghost">Download</DownloadButton>
+              <DownloadButton href="/assets/hero.png" filename="hero.png" variant="icon" size="small">Download</DownloadButton>
             </div>
+          </div>
 
-            <div>
-              <p>Disabled</p>
-              <NeutralButton disabled>Disabled</NeutralButton>
+          <div className="atoms__group">
+            <h3>Neutral Button — States</h3>
+            <div style={{ display: 'flex', gap: 'var(--space-md)', alignItems: 'center' }}>
+              <div>
+                <p>Default</p>
+                <NeutralButton>Neutral</NeutralButton>
+              </div>
+
+              <div>
+                <p>Hover (simulated)</p>
+                <button className="neutral-button is-hover" aria-label="Simulated hover">Neutral</button>
+              </div>
+
+              <div>
+                <p>Disabled</p>
+                <NeutralButton disabled>Disabled</NeutralButton>
+              </div>
+            </div>
+          </div>
+
+          <div className="atoms__group">
+            <h3>Star Rating</h3>
+            <div style={{ display: 'flex', gap: 'var(--space-md)', alignItems: 'center' }}>
+              <div>
+                <p>Uncontrolled (click to set)</p>
+                <StarRating />
+              </div>
+
+              <div>
+                <p>Controlled (value = 3)</p>
+                <StarRating value={3} />
+              </div>
+            </div>
+          </div>
+
+          <div className="atoms__group">
+            <h3>Textarea — Validation States</h3>
+            <div style={{ display: 'flex', gap: 'var(--space-md)', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+              <div style={{ minWidth: 220 }}>
+                <p>Neutral</p>
+                <Textarea placeholder="Write something..." rows={5} helperText="Optional helper text" />
+              </div>
+
+              <div style={{ minWidth: 220 }}>
+                <p>Error</p>
+                <Textarea state="error" errorMessage="Please provide at least 10 characters" defaultValue="short" rows={5} />
+              </div>
+
+              <div style={{ minWidth: 220 }}>
+                <p>Validated</p>
+                <Textarea state="validated" defaultValue="Looks good to me." rows={5} />
+              </div>
             </div>
           </div>
         </section>
 
-        <div style={{ height: 'var(--space-lg)' }} />
-
-        <section aria-labelledby="rating-demo">
-          <h2 id="rating-demo">Star Rating — Default + Hover Preview</h2>
-          <div style={{ display: 'flex', gap: 'var(--space-md)', alignItems: 'center' }}>
-            <div>
-              <p>Uncontrolled (click to set)</p>
-              <StarRating />
-            </div>
-
-            <div>
-              <p>Controlled (value = 3)</p>
-              <StarRating value={3} />
-            </div>
+        <section aria-labelledby="molecules-section">
+          <h2 id="molecules-section">Molecules</h2>
+          <div className="molecules__group">
+            <h3>Pill Menu</h3>
+            <PillMenu />
           </div>
         </section>
 
-        <div style={{ height: 'var(--space-lg)' }} />
+        <section aria-labelledby="organism-section">
+          <h2 id="organism-section">Organism</h2>
+          <div className="organism__group">
+            <h3>Carousel</h3>
+            <div style={{ display: 'flex', gap: 'var(--space-md)', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+              <div style={{ minWidth: 300 }}>
+                <p>Default</p>
+                <CarouselCard images={[heroImg, heroImg, heroImg]} autoPlay={false} />
+              </div>
 
-        <section aria-labelledby="textarea-demo">
-          <h2 id="textarea-demo">Multiline Input — Validation States</h2>
-          <div style={{ display: 'flex', gap: 'var(--space-md)', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-            <div style={{ minWidth: 220 }}>
-              <p>Neutral</p>
-              <Textarea placeholder="Write something..." rows={5} helperText="Optional helper text" />
-            </div>
+              <div style={{ minWidth: 300 }}>
+                <p>Hover (simulated)</p>
+                <CarouselCard images={[heroImg, heroImg, heroImg]} hover />
+              </div>
 
-            <div style={{ minWidth: 220 }}>
-              <p>Error</p>
-              <Textarea state="error" errorMessage="Please provide at least 10 characters" defaultValue="short" rows={5} />
-            </div>
-
-            <div style={{ minWidth: 220 }}>
-              <p>Validated</p>
-              <Textarea state="validated" defaultValue="Looks good to me." rows={5} />
+              <div style={{ minWidth: 300 }}>
+                <p>Disabled</p>
+                <CarouselCard images={[heroImg, heroImg, heroImg]} disabled />
+              </div>
             </div>
           </div>
-        </section>
-
-        <div style={{ height: 'var(--space-lg)' }} />
-
-        <section aria-labelledby="carousel-demo">
-          <h2 id="carousel-demo">Carousel Card — Click or swipe through images</h2>
-          <CarouselCard images={[heroImg, heroImg, heroImg]} autoPlay={false} />
         </section>
       </main>
     </>

@@ -16,7 +16,7 @@
   font-family: var(--font-family-body);
   font-size: var(--text-base);
   padding: clamp(0.5rem, 1vw, 0.75rem);
-  border-radius: var(--radius-pill);
+  border-radius: 0.375rem;
   border: var(--border-thin);
   background: var(--color-bg-paper);
   color: var(--color-text-main);

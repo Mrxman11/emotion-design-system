@@ -82,7 +82,7 @@
   --space-card-gap: clamp(1.5rem, 4vw + 0.5rem, 2.5rem);
 
   /* 5. Borders & Structure */
-   --border-radius-card: 8px;
+  --border-radius-card: 28px;
   --border-radius-input: 12px;
   --border-main: 1px solid var(--color-neutral-divider);
 

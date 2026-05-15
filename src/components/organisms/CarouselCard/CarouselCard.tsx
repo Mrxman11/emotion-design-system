@@ -8,9 +8,13 @@ type Props = {
   autoPlay?: boolean
   /** ms */
   interval?: number
+  /** demo: force hover visuals */
+  hover?: boolean
+  /** disable interactions and dim visuals */
+  disabled?: boolean
 }
 
-export default function CarouselCard({ images, alt = [], autoPlay = false, interval = 4000 }: Props) {
+export default function CarouselCard({ images, alt = [], autoPlay = false, interval = 4000, hover = false, disabled = false }: Props) {
   const [index, setIndex] = useState(0)
   const max = images.length
   const timer = useRef<number | null>(null)
@@ -35,15 +39,18 @@ export default function CarouselCard({ images, alt = [], autoPlay = false, inter
   const goTo = (n: number) => setIndex(((n % max) + max) % max)
 
   const onKeyDown = (e: React.KeyboardEvent) => {
+    if (disabled) return
     if (e.key === 'ArrowLeft') prev()
     if (e.key === 'ArrowRight') next()
   }
 
   const onTouchStart = (e: React.TouchEvent) => {
+    if (disabled) return
     touchStartX.current = e.touches[0].clientX
   }
 
   const onTouchEnd = (e: React.TouchEvent) => {
+    if (disabled) return
     if (touchStartX.current == null) return
     const delta = e.changedTouches[0].clientX - touchStartX.current
     if (Math.abs(delta) > 30) {
@@ -55,8 +62,10 @@ export default function CarouselCard({ images, alt = [], autoPlay = false, inter
 
   if (!images || images.length === 0) return null
 
+  const rootClass = `carousel-card ${hover ? 'is-hover' : ''} ${disabled ? 'is-disabled' : ''}`
+
   return (
-    <div className="carousel-card" onKeyDown={onKeyDown} tabIndex={0} aria-roledescription="carousel">
+    <div className={rootClass} onKeyDown={onKeyDown} tabIndex={disabled ? -1 : 0} aria-roledescription="carousel" aria-disabled={disabled}>
       <div
         className="carousel-card__frame"
         onTouchStart={onTouchStart}
@@ -72,19 +81,19 @@ export default function CarouselCard({ images, alt = [], autoPlay = false, inter
           </figure>
         ))}
 
-        <button className="carousel-card__nav carousel-card__nav--prev" onClick={prev} aria-label="Previous slide">‹</button>
-        <button className="carousel-card__nav carousel-card__nav--next" onClick={next} aria-label="Next slide">›</button>
+        <button className="carousel-card__nav carousel-card__nav--prev" onClick={() => !disabled && prev()} aria-label="Previous slide" disabled={disabled} aria-disabled={disabled}>‹</button>
+        <button className="carousel-card__nav carousel-card__nav--next" onClick={() => !disabled && next()} aria-label="Next slide" disabled={disabled} aria-disabled={disabled}>›</button>
       </div>
-
-      <div className="carousel-card__indicators" role="tablist" aria-label="Slides">
+      <div className="carousel-card__indicators" role="tablist" aria-label="Slides" aria-hidden={disabled}>
         {images.map((_, i) => (
           <button
             key={i}
             className={`carousel-card__dot ${i === index ? 'is-active' : ''}`}
-            onClick={() => goTo(i)}
+            onClick={() => !disabled && goTo(i)}
             aria-label={`Go to slide ${i + 1}`}
             aria-selected={i === index}
             role="tab"
+            disabled={disabled}
           />
         ))}
       </div>
