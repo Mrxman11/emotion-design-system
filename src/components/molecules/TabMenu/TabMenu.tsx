@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import type { KeyboardEvent } from 'react'
 import './TabMenu.css'
 
 type Item = {
@@ -32,7 +33,7 @@ export default function TabMenu({ items, initialActive = null, onChange }: Props
     btn?.focus()
   }
 
-  const onKeyDown = (e: React.KeyboardEvent, idx: number) => {
+  const onKeyDown = (e: KeyboardEvent<HTMLButtonElement>, idx: number) => {
     if (e.key === 'ArrowRight') {
       e.preventDefault()
       focusIndex((idx + 1) % list.length)
@@ -65,7 +66,7 @@ export default function TabMenu({ items, initialActive = null, onChange }: Props
           return (
             <li key={it.id} className="tab-menu__item">
               <button
-                ref={(el) => (buttonsRef.current[i] = el)}
+                ref={(el) => { buttonsRef.current[i] = el }}
                 className={`tab ${isActive ? 'tab--active' : ''}`}
                 role="tab"
                 aria-selected={isActive}

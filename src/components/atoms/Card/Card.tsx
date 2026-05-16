@@ -1,15 +1,14 @@
-import React from 'react'
+import type { FC, ReactNode } from 'react'
 import './Card.css'
 
 export interface CardProps {
   title?: string
-  children?: React.ReactNode
+  children?: ReactNode
   imageSrc?: string
   variant?: 'vertical' | 'horizontal' | 'no-image'
   className?: string
 }
-
-const Card: React.FC<CardProps> = ({ title, children, imageSrc, variant = 'vertical', className = '' }) => {
+const Card: FC<CardProps> = ({ title, children, imageSrc, variant = 'vertical', className = '' }) => {
   const variantClass = `card--${variant}`
 
   return (

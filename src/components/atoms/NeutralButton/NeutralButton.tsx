@@ -1,9 +1,9 @@
-import React from 'react'
+import type { ReactNode, MouseEventHandler } from 'react'
 import './NeutralButton.css'
 
 type Props = {
-  children?: React.ReactNode
-  onClick?: React.MouseEventHandler<HTMLButtonElement>
+  children?: ReactNode
+  onClick?: MouseEventHandler<HTMLButtonElement>
   disabled?: boolean
   size?: 'small' | 'large'
   ariaLabel?: string

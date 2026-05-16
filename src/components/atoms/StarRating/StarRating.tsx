@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import type { KeyboardEvent } from 'react'
 import './StarRating.css'
 
 type Props = {
@@ -30,7 +31,7 @@ export default function StarRating({ max = 5, value, defaultValue = 0, onChange,
     onChange?.(v)
   }
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (readOnly) return
     const current = hover ?? rating
     if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {

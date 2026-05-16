@@ -1,4 +1,4 @@
-import React from 'react'
+import type { ReactNode } from 'react'
 import './DownloadButton.css'
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
   size?: 'small' | 'large'
   /** Visual variant */
   variant?: 'primary' | 'ghost' | 'icon'
-  children?: React.ReactNode
+  children?: ReactNode
 }
 
 /**

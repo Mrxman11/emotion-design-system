@@ -1,6 +1,4 @@
-import { useState } from 'react'
 import { Routes, Route, NavLink } from 'react-router-dom'
-const IMAGE_URL = 'https://images.unsplash.com/photo-1777034707514-d5fd29adba97?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 import './App.css'
 import DownloadButton from './components/atoms/DownloadButton/DownloadButton'
 import Card from './components/atoms/Card/Card'
@@ -14,8 +12,9 @@ import ScrollTracker from './components/atoms/ScrollTracker/ScrollTracker'
 import Documentation from './pages/Documentation'
 import Releases from './pages/Releases'
 
+const IMAGE_URL = 'https://images.unsplash.com/photo-1777034707514-d5fd29adba97?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>

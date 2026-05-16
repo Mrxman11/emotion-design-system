@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import type { KeyboardEvent, TouchEvent } from 'react'
 import './CarouselCard.css'
 
 type Props = {
@@ -38,18 +39,18 @@ export default function CarouselCard({ images, alt = [], autoPlay = false, inter
   const next = () => setIndex((i) => (i + 1) % max)
   const goTo = (n: number) => setIndex(((n % max) + max) % max)
 
-  const onKeyDown = (e: React.KeyboardEvent) => {
+  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (disabled) return
     if (e.key === 'ArrowLeft') prev()
     if (e.key === 'ArrowRight') next()
   }
 
-  const onTouchStart = (e: React.TouchEvent) => {
+  const onTouchStart = (e: TouchEvent<HTMLDivElement>) => {
     if (disabled) return
     touchStartX.current = e.touches[0].clientX
   }
 
-  const onTouchEnd = (e: React.TouchEvent) => {
+  const onTouchEnd = (e: TouchEvent<HTMLDivElement>) => {
     if (disabled) return
     if (touchStartX.current == null) return
     const delta = e.changedTouches[0].clientX - touchStartX.current

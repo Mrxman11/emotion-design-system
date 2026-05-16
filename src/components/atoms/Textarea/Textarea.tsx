@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import type { ChangeEvent } from 'react'
 import './Textarea.css'
 
 type State = 'neutral' | 'error' | 'validated'
@@ -40,7 +41,7 @@ export default function Textarea({
     if (typeof value === 'string') setInternal(value)
   }, [value])
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const v = e.target.value
     if (value === undefined) setInternal(v)
     onChange?.(v)
